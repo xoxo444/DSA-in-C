@@ -3,6 +3,7 @@
 int main() { 
     int n, i, pos, value;
 
+
     printf("Enter size: ");
     scanf("%d", &n);
 
