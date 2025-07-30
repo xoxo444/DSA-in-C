@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 #define SIZE 5
 
 int queue[SIZE], front = -1, rear = -1;
@@ -15,7 +14,9 @@ void enqueue(int value) {
     }
 }
 
+
 void dequeue() {
+    
     if (front == -1) {
         printf("Queue Underflow\n");
     } else {
@@ -24,6 +25,7 @@ void dequeue() {
             front = rear = -1;
         else
             front++;
+        
     }
 }
 
@@ -49,13 +51,17 @@ int main() {
             printf("Enter value: ");
             scanf("%d", &value);
             enqueue(value);
+            
         } else if (choice == 2) {
             dequeue();
+            
         } else if (choice == 3) {
             display();
+            
         } else if (choice == 4) {
             printf("Exiting...\n");
             break;
+            
         } else {
             printf("Invalid choice\n");
         }
