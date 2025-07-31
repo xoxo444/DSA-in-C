@@ -15,11 +15,14 @@ void push(int value) {
         return;
     }
   
+    
+    
     newNode->data = value;
     newNode->next = top;
     top = newNode;
     printf("Pushed %d onto stack\n", value);
 }
+
 
 void pop() {
     if (top == NULL) {
