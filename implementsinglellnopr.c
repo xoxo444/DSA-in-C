@@ -6,6 +6,7 @@ struct Node {
     struct Node* next;
 };
 
+
 struct Node* head = NULL;
 
 void insert(int value) {
@@ -14,6 +15,7 @@ void insert(int value) {
     newNode->next = head;
     head = newNode;
 }
+
 
 void deleteNode() {
     if (head == NULL)
@@ -24,6 +26,7 @@ void deleteNode() {
         free(temp);
     }
 }
+
 
 void display() {
     struct Node* temp = head;
@@ -49,15 +52,21 @@ int main() {
             printf("Enter value: ");
             scanf("%d", &value);
             insert(value);
+            
         } else if (choice == 2) {
             deleteNode();
+            
         } else if (choice == 3) {
             display();
+            
         } else if (choice == 4) {
             break;
+            
         } else {
             printf("Invalid choice\n");
+            
         }
     }
+    
     return 0;
 }
