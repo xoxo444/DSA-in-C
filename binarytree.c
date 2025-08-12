@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Structure for a binary tree node
 struct Node {
     int data;
     struct Node *left, *right;
 };
 
-// Function to create a new node
 struct Node* createNode(int value) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = value;
@@ -15,7 +13,6 @@ struct Node* createNode(int value) {
     return newNode;
 }
 
-// Insert node in binary tree (BST style)
 struct Node* insertNode(struct Node* root, int value) {
     if (root == NULL) return createNode(value);
 
@@ -54,7 +51,6 @@ void postorder(struct Node* root) {
     }
 }
 
-// Find minimum value node (for deletion)
 struct Node* findMin(struct Node* root) {
     while (root->left != NULL)
         root = root->left;
@@ -80,7 +76,6 @@ struct Node* deleteNode(struct Node* root, int value) {
             free(root);
             return temp;
         }
-        // Node with two children
         struct Node* temp = findMin(root->right);
         root->data = temp->data;
         root->right = deleteNode(root->right, temp->data);
@@ -88,11 +83,10 @@ struct Node* deleteNode(struct Node* root, int value) {
     return root;
 }
 
-// Main function for testing
 int main() {
     struct Node* root = NULL;
 
-    // Insert nodes
+    
     root = insertNode(root, 50);
     root = insertNode(root, 30);
     root = insertNode(root, 70);
