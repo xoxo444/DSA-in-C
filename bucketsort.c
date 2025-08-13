@@ -4,13 +4,11 @@
 #define N 10  // Number of elements
 #define BUCKETS 10 // Number of buckets
 
-// Node structure for bucket linked list
 struct Node {
     float data;
     struct Node* next;
 };
 
-// Insert element into bucket in sorted order
 void insertSorted(struct Node** bucket, float value) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = value;
@@ -29,17 +27,14 @@ void insertSorted(struct Node** bucket, float value) {
     }
 }
 
-// Bucket sort function
 void bucketSort(float arr[], int n) {
     struct Node* buckets[BUCKETS] = {NULL};
 
-    // Put array elements in different buckets
     for (int i = 0; i < n; i++) {
         int bucketIndex = arr[i] * BUCKETS; // index = value * bucket count
         insertSorted(&buckets[bucketIndex], arr[i]);
     }
 
-    // Concatenate all buckets into arr[]
     int index = 0;
     for (int i = 0; i < BUCKETS; i++) {
         struct Node* current = buckets[i];
@@ -49,6 +44,7 @@ void bucketSort(float arr[], int n) {
         }
     }
 }
+
 
 int main() {
     float arr[N] = {0.78, 0.17, 0.39, 0.26, 0.72,
