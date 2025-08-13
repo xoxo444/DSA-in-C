@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Structure for AVL tree node
 struct Node {
     int key;
     struct Node* left;
@@ -9,7 +8,6 @@ struct Node {
     int height;
 };
 
-// Function to get height of a node
 int height(struct Node* N) {
     if (N == NULL)
         return 0;
@@ -21,7 +19,6 @@ int max(int a, int b) {
     return (a > b) ? a : b;
 }
 
-// Create a new node
 struct Node* newNode(int key) {
     struct Node* node = (struct Node*)malloc(sizeof(struct Node));
     node->key = key;
