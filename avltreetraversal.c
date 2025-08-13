@@ -14,7 +14,6 @@ int height(struct Node* N) {
     return N->height;
 }
 
-// Get maximum of two integers
 int max(int a, int b) {
     return (a > b) ? a : b;
 }
@@ -24,52 +23,43 @@ struct Node* newNode(int key) {
     node->key = key;
     node->left = NULL;
     node->right = NULL;
-    node->height = 1; // New node is initially added at leaf
+    node->height = 1; 
     return node;
 }
 
-// Right rotate
 struct Node* rightRotate(struct Node* y) {
     struct Node* x = y->left;
     struct Node* T2 = x->right;
 
-    // Perform rotation
     x->right = y;
     y->left = T2;
 
-    // Update heights
     y->height = max(height(y->left), height(y->right)) + 1;
     x->height = max(height(x->left), height(x->right)) + 1;
 
     return x;
 }
 
-// Left rotate
 struct Node* leftRotate(struct Node* x) {
     struct Node* y = x->right;
     struct Node* T2 = y->left;
 
-    // Perform rotation
     y->left = x;
     x->right = T2;
 
-    // Update heights
     x->height = max(height(x->left), height(x->right)) + 1;
     y->height = max(height(y->left), height(y->right)) + 1;
 
     return y;
 }
 
-// Get balance factor
 int getBalance(struct Node* N) {
     if (N == NULL)
         return 0;
     return height(N->left) - height(N->right);
 }
 
-// Insert a node
 struct Node* insert(struct Node* node, int key) {
-    // Perform normal BST insertion
     if (node == NULL)
         return newNode(key);
 
@@ -77,30 +67,24 @@ struct Node* insert(struct Node* node, int key) {
         node->left = insert(node->left, key);
     else if (key > node->key)
         node->right = insert(node->right, key);
-    else // Equal keys not allowed
+    else 
         return node;
 
-    // Update height
     node->height = 1 + max(height(node->left), height(node->right));
 
-    // Get balance factor
     int balance = getBalance(node);
 
-    // Left Left Case
     if (balance > 1 && key < node->left->key)
         return rightRotate(node);
 
-    // Right Right Case
     if (balance < -1 && key > node->right->key)
         return leftRotate(node);
 
-    // Left Right Case
     if (balance > 1 && key > node->left->key) {
         node->left = leftRotate(node->left);
         return rightRotate(node);
     }
 
-    // Right Left Case
     if (balance < -1 && key < node->right->key) {
         node->right = rightRotate(node->right);
         return leftRotate(node);
@@ -109,7 +93,6 @@ struct Node* insert(struct Node* node, int key) {
     return node;
 }
 
-// Traversals
 void preOrder(struct Node* root) {
     if (root != NULL) {
         printf("%d ", root->key);
@@ -134,7 +117,7 @@ void postOrder(struct Node* root) {
     }
 }
 
-// Main
+
 int main() {
     struct Node* root = NULL;
 
