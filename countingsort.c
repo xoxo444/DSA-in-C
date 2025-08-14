@@ -8,11 +8,13 @@ void countingSort(int arr[], int n) {
             max = arr[i];
     }
 
+
     int *count = (int*)calloc(max + 1, sizeof(int));
 
     for (int i = 0; i < n; i++) {
         count[arr[i]]++;
     }
+
 
     for (int i = 1; i <= max; i++) {
         count[i] += count[i - 1];
