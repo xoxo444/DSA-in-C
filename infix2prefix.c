@@ -39,7 +39,6 @@ int isOperator(char c) {
     return (c == '+' || c == '-' || c == '*' || c == '/' || c == '^');
 }
 
-// Function to reverse a string and also swap '(' with ')' and vice versa
 void reverse(char str[]) {
     int len = strlen(str);
     for (int i = 0; i < len / 2; i++) {
@@ -59,13 +58,12 @@ void infixToPrefix(char infix[], char prefix[]) {
     char temp[MAX];
     int i, j = 0;
 
-    reverse(infix); // Step 1: Reverse infix expression
-
+    reverse(infix); 
     for (i = 0; infix[i] != '\0'; i++) {
         char c = infix[i];
 
         if (isalnum(c)) {
-            temp[j++] = c; // Operand goes directly
+            temp[j++] = c; 
         }
         else if (c == '(') {
             push(c);
@@ -74,7 +72,7 @@ void infixToPrefix(char infix[], char prefix[]) {
             while (top != -1 && peek() != '(') {
                 temp[j++] = pop();
             }
-            pop(); // Remove '('
+            pop(); 
         }
         else if (isOperator(c)) {
             while (top != -1 && precedence(peek()) > precedence(c)) {
@@ -89,9 +87,10 @@ void infixToPrefix(char infix[], char prefix[]) {
     }
     temp[j] = '\0';
 
-    reverse(temp); // Step 3: Reverse postfix to get prefix
+    reverse(temp); 
     strcpy(prefix, temp);
 }
+
 
 int main() {
     char infix[MAX], prefix[MAX];
