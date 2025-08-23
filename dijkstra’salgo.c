@@ -3,7 +3,8 @@
 #include <stdbool.h>
 
 #define INF 1000000000
-#define MAX 1005   // adjust as needed
+#define MAX 1005   
+
 
 int minDistance(int dist[], bool sptSet[], int V) {
     int min = INF, min_index = -1;
